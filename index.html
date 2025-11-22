@@ -3,48 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SwiftQ - Smart Hospital Queue</title>
+  <title>SwiftQ – Smart Hospital Queue</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="container">
 
-  <h1>SwiftQ - Smart Hospital Queue</h1>
-  <p>Manage patients efficiently with automated tokens and live queue display.</p>
+    <!-- Header -->
+    <header>
+      <h1>SwiftQ — Smart Hospital Queue</h1>
+      <p class="lead">Manage patients efficiently with automated token generation, live queue display, and emergency handling.</p>
+    </header>
 
-  <h2>Now Serving</h2>
-  <div>-</div>
+    <!-- Now Serving -->
+    <div class="now-serving-card card">
+      <h2>Now Serving</h2>
+      <div id="nowServing">—</div>
+    </div>
 
+    <!-- Main Grid -->
+    <div class="grid">
 
-  <h3>Generate Token</h3>
-  <div>
-    <input placeholder="Patient name (optional)" />
-    <select>
-      <option>General</option>
-      <option>OPD</option>
-      <option>Emergency</option>
-      <option>Pharmacy</option>
-    </select>
+      <!-- Token Generation Form -->
+      <div class="card">
+        <h3>Generate Token</h3>
+        <div class="form-group">
+          <input id="patientName" placeholder="Patient name (optional)" />
+          <select id="department">
+            <option>General</option>
+            <option>OPD</option>
+            <option>Emergency</option>
+            <option>Pharmacy</option>
+          </select>
+        </div>
+        <div class="form-group" id="emergencyDesc" style="display:none;">
+          <input type="text" placeholder="Emergency details (reason for admission)" />
+        </div>
+        <div class="form-group checkbox">
+          <label><input id="priorityCheck" type="checkbox"> Priority (elderly/critical)</label>
+        </div>
+        <div class="form-group">
+          <button id="genBtn" class="primary">Generate Token</button>
+          <button id="callNextBtn" class="small">Call Next</button>
+        </div>
+        <div id="queueStats" class="stats"></div>
+      </div>
+
+      <!-- Live Queue -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3>Live Queue</h3>
+          <button id="historyBtn" class="small">View History</button>
+        </div>
+        <input id="searchInput" placeholder="Search token or name" />
+        <div id="queueContainer" class="queue-list"></div>
+      </div>
+
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
   </div>
-
-  <div>
-    <label>
-      <input type="checkbox">
-      Priority (elderly/critical)
-    </label>
-  </div>
-
-  <div>
-    <button>Generate Token</button>
-    <button>Call Next</button>
-  </div>
-
-  <p></p>
-
-  <h3>Live Queue</h3>
-  <input placeholder="Search token or name" />
-  <div></div>
-
-  <div></div>
-
 </body>
 </html>
