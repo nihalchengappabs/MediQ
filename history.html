@@ -41,7 +41,7 @@
 
   <script>
     const historyContainer = document.getElementById('historyContainer');
-    let history = JSON.parse(localStorage.getItem('swiftq_history_v1') || '[]');
+    let history = JSON.parse(localStorage.getItem('mediq_history_v1') || '[]');
 
     function renderHistory() {
       historyContainer.innerHTML = '';
@@ -73,8 +73,8 @@
     document.getElementById('clearHistory').onclick = () => {
       if(confirm('Are you sure you want to clear all history?')){
         history = [];
-        localStorage.setItem('swiftq_history_v1', JSON.stringify(history));
-        localStorage.setItem('swiftq_total_today_v1', 0); 
+        localStorage.setItem('mediq_history_v1', JSON.stringify(history));
+        localStorage.setItem('mediq_total_today_v1', 0); 
         renderHistory();
         alert('History cleared and Today count reset to 0!');
       }

@@ -2,7 +2,7 @@ const $ = id => document.getElementById(id);
 
 // Refresh stats when coming back from history page
 window.addEventListener('focus', () => {
-  totalToday = Number(localStorage.getItem('swiftq_total_today_v1') || 0);
+  totalToday = Number(localStorage.getItem('mediq_total_today_v1') || 0);
   renderStats();
 });
 
@@ -27,9 +27,9 @@ $('department').addEventListener('change', () => {
 });
 
 // LocalStorage keys
-const KEY_QUEUE = 'swiftq_queue_v7';
-const KEY_COUNTER = 'swiftq_counter_v7';
-const KEY_TOTAL_TODAY = 'swiftq_total_today_v1';
+const KEY_QUEUE = 'mediq_queue_v7';
+const KEY_COUNTER = 'mediq_counter_v7';
+const KEY_TOTAL_TODAY = 'mediq_total_today_v1';
 const EST_TIME_PER_PATIENT = 5; // minutes per patient
 
 // State
@@ -67,18 +67,18 @@ function sortQueue() {
 
 // Add token to history
 function addToHistory(token, action) {
-  let history = JSON.parse(localStorage.getItem('swiftq_history_v1') || '[]');
+  let history = JSON.parse(localStorage.getItem('mediq_history_v1') || '[]');
   const record = { ...token };
   if (action === 'served') record.servedAt = Date.now();
   if (action === 'removed') record.removedAt = Date.now();
   history.push(record);
-  localStorage.setItem('swiftq_history_v1', JSON.stringify(history));
+  localStorage.setItem('mediq_history_v1', JSON.stringify(history));
 }
 
 // Clear history
 function clearHistory() {
   if (confirm('Clear all history?')) {
-    localStorage.removeItem('swiftq_history_v1');
+    localStorage.removeItem('mediq_history_v1');
     totalToday = 0; // Reset total today
     localStorage.setItem(KEY_TOTAL_TODAY, totalToday);
     toast('History cleared and total today reset to 0');
@@ -193,8 +193,8 @@ function renderStats() {
   const priority = queue.filter(t => t.priority && !t.emergency).length;
   const emergency = queue.filter(t => t.emergency).length;
 
-// Compute totalToday from history
-  const history = JSON.parse(localStorage.getItem('swiftq_history_v1') || '[]');
+  // Compute totalToday from history
+  const history = JSON.parse(localStorage.getItem('mediq_history_v1') || '[]');
   const totalToday = history.length;
 
   $('queueStats').textContent = `Total: ${total} | Priority: ${priority} | Emergency: ${emergency} | Today: ${totalToday}`;
@@ -300,4 +300,3 @@ ensureDefaultPatients();
 sortQueue();
 renderQueue();
 renderNowServing();
-

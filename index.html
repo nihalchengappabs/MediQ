@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SwiftQ – Smart Hospital Queue</title>
+  <title>MediQ - Smart Hospital Queue</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
 
-    <!-- Header -->
     <header>
-      <h1>SwiftQ — Smart Hospital Queue</h1>
+      <h1>MediQ - Smart Hospital Queue</h1>
       <p class="lead">Manage patients efficiently with automated token generation, live queue display, and emergency handling.</p>
     </header>
 
-    <!-- Now Serving -->
     <div class="now-serving-card card">
       <h2>Now Serving</h2>
       <div id="nowServing">—</div>
   </div>
 
-  <!-- Main Grid -->
   <div class="grid">
 
-    <!-- Token Generation Form -->
     <div class="card">
       <h3>Generate Token</h3>
       <div class="form-group">
@@ -49,7 +45,6 @@
       <div id="queueStats" class="stats"></div>
     </div>
 
-    <!-- Live Queue -->
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:center;">
       <h3>Live Queue</h3>
@@ -59,7 +54,6 @@
       <div id="queueContainer" class="queue-list"></div>
     </div>
 
-    <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
   <script src="script.js"></script>
